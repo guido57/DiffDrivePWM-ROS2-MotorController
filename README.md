@@ -22,3 +22,10 @@ When you arrive at "Install ROS 2 packages" install only:
 `sudo apt install ros-humble-ros-base`
 
 and stop there.
+
+### Source setup
+
+To use ROS2 you need to source it and the best option is to add at the end of your `.bashrc`
+
+`source /opt/ros/humble/setup.bash`
+
