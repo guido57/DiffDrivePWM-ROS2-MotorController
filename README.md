@@ -20,3 +20,5 @@ https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
 When you arrive at "Install ROS 2 packages" install only:
 
 `sudo apt install ros-humble-ros-base`
+
+and stop there.
