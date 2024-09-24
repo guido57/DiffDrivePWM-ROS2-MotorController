@@ -34,8 +34,7 @@ This package, written in C++:
 
 1) __Install pigpio__
    
-   Make sure pigpio is installed and running on your system:
-
+  
    ```
    wget https://github.com/joan2937/pigpio/archive/master.zip
    unzip master.zip
