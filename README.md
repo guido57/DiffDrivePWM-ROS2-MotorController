@@ -32,7 +32,7 @@ This package, written in C++:
 
 ### Steps to Create the ROS2 Package
 
-1) Install pigpio
+1) __Install pigpio__
    
    Make sure pigpio is installed and running on your system:
 
@@ -43,7 +43,7 @@ This package, written in C++:
    make
    sudo make install
    ```
-2) Enable and start pigpio daemon on boot
+2) __Enable and start pigpio daemon on boot__
 
    ```
    sudo cp util/pigpiod.service /etc/systemd/system
@@ -52,7 +52,7 @@ This package, written in C++:
    sudo systemctl enable pigpiod
    ```
    
-2. Clone this repository
+3) __Clone this repository__
 
 3. Build this package
 
