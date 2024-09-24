@@ -43,6 +43,14 @@ This package, written in C++:
    make
    sudo make install
    ```
+2) Enable and start pigpio daemon on boot
+
+   ```
+   sudo cp util/pigpiod.service /etc/systemd/system
+   sudo cp /usr/local/bin/pigpiod /usr/bin/pigpiod
+   sudo systemctl start pigpiod
+   sudo systemctl enable pigpiod
+   ```
    
 2. Clone this repository
 
