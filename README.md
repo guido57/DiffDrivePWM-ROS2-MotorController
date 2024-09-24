@@ -33,6 +33,7 @@ This package, written in C++:
 ### Steps to Create the ROS2 Package
 
 1) Install pigpio
+   
    Make sure pigpio is installed and running on your system:
 
    ```
