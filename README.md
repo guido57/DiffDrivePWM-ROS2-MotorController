@@ -35,13 +35,14 @@ This package, written in C++:
 1) Install pigpio
    Make sure pigpio is installed and running on your system:
 
-```
-wget https://github.com/joan2937/pigpio/archive/master.zip
-unzip master.zip
-cd pigpio-master
-make
-sudo make install
-```
+   ```
+   wget https://github.com/joan2937/pigpio/archive/master.zip
+   unzip master.zip
+   cd pigpio-master
+   make
+   sudo make install
+   ```
+   
 2. Clone this repository
 
 3. Build this package
