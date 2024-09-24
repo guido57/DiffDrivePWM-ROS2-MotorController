@@ -32,16 +32,16 @@ This package, written in C++:
 
 ### Steps to Create the ROS2 Package
 
-1. Install pigpio
-Make sure pigpio is installed and running on your system:
+1) Install pigpio
+   Make sure pigpio is installed and running on your system:
 
-bash
-Copia codice
-sudo apt-get update
-sudo apt-get install pigpio
-sudo systemctl start pigpiod
-sudo systemctl enable pigpiod
-
+```
+wget https://github.com/joan2937/pigpio/archive/master.zip
+unzip master.zip
+cd pigpio-master
+make
+sudo make install
+```
 2. Clone this repository
 
 3. Build this package
