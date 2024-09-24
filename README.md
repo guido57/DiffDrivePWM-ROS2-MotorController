@@ -15,7 +15,9 @@ On your development computer, use Raspberry imager to create an SD card with
 
 * Follow these instructions: https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debs.html
 * When you arrive at "Install ROS 2 packages" install only:
+  
 `sudo apt install ros-humble-ros-base`
+
 `sudo apt install ros-dev-tools`
 
 and stop there.
