@@ -22,7 +22,9 @@ On your development computer, use Raspberry imager to create an SD card with
 
 and stop there.
 
-* Source setup: to use ROS2 you need to source it and the best option is to add `source /opt/ros/humble/setup.bash` at the end of your .bashrc
+* Source setup: to use ROS2 you need to source it and the best option is to add
+  `source /opt/ros/humble/setup.bash`
+  at the end of your .bashrc
 
 ## Create the ROS2 
 
