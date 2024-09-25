@@ -14,10 +14,12 @@ public:
 private:
     int pi;
     void cmd_vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg);
+    void timeout_callback();
     void set_motor_speed(float left, float right);
     void stop_motors();
 
     rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr subscription_;
+    rclcpp::TimerBase::SharedPtr timer_;  // Timer for timeout
 
     // GPIO pins for the motors
     int motor1_1_pin_;
@@ -28,6 +30,8 @@ private:
     // Parameters
     double wheels_distance_;
     double max_speed_;
+    double timeout_duration_;  // Duration to wait before stopping motors after no cmd_vel received
+
 };
 
 #endif  // MOTOR_CONTROLLER_NODE_HPP_

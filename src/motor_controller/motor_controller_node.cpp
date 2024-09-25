@@ -6,10 +6,7 @@ MotorController::MotorController() : Node("motor_controller_node")
     // Declare parameters with default values
     this->declare_parameter<double>("wheels_distance", 0.135); // Example: 20 cm
     this->declare_parameter<double>("max_speed", 1.0); // Example: 1 m/s
-
-    // Get parameter values
-    this->get_parameter("wheels_distance", wheels_distance_);
-    this->get_parameter("max_speed", max_speed_);
+    this->declare_parameter<double>("timeout_duration", 1.0); // 1 second timeout by default
 
     // Connect to the pigpio daemon
     pi = pigpio_start(nullptr, nullptr);
@@ -47,17 +44,32 @@ MotorController::MotorController() : Node("motor_controller_node")
     subscription_ = this->create_subscription<geometry_msgs::msg::Twist>(
         "/cmd_vel", 10, std::bind(&MotorController::cmd_vel_callback, this, std::placeholders::_1));
 
+    // Create a timer to stop the motors if no cmd_vel is received within the timeout duration
+    timer_ = this->create_wall_timer(
+        std::chrono::duration<double>(timeout_duration_),
+        std::bind(&MotorController::timeout_callback, this)
+    );
+
     RCLCPP_INFO(this->get_logger(), "Motor Controller Node has been started.");
 }
 
 MotorController::~MotorController()
 {
     stop_motors();
+    RCLCPP_INFO(this->get_logger(), "Motors stopped.");
     pigpio_stop(pi);  // Disconnect from the daemon
 }
 
 void MotorController::cmd_vel_callback(const geometry_msgs::msg::Twist::SharedPtr msg)
 {
+    // Reset the timeout timer whenever a new command is received
+    timer_->reset();
+    
+    // Get parameter values
+    this->get_parameter("wheels_distance", wheels_distance_);
+    this->get_parameter("max_speed", max_speed_);
+    this->get_parameter("timeout_duration", timeout_duration_);
+
     // Extract linear and angular velocity
     double linear_x = msg->linear.x;
     double angular_z = msg->angular.z;
@@ -75,6 +87,12 @@ void MotorController::cmd_vel_callback(const geometry_msgs::msg::Twist::SharedPt
 
     // Set motor speeds
     set_motor_speed(left_speed, right_speed);
+
+    // Create a timer to stop the motors if no cmd_vel is received within the timeout duration
+    timer_ = this->create_wall_timer(
+        std::chrono::duration<double>(timeout_duration_),
+        std::bind(&MotorController::timeout_callback, this));
+
 }
 
 void MotorController::set_motor_speed(float left, float right)
@@ -116,7 +134,13 @@ void MotorController::stop_motors()
     set_PWM_dutycycle(pi, motor2_1_pin_, 0);
     set_PWM_dutycycle(pi, motor2_2_pin_, 0);
     
-    RCLCPP_INFO(this->get_logger(), "Motors stopped.");
+    //RCLCPP_INFO(this->get_logger(), "Motors stopped.");
+}
+
+void MotorController::timeout_callback()
+{
+    //RCLCPP_WARN(this->get_logger(), "Timeout! No cmd_vel received. Stopping motors.");
+    stop_motors();
 }
 
 int main(int argc, char *argv[])
