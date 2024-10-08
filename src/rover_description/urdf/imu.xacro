@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+    <!-- IMU Joint -->
+    <joint name="imu_joint" type="fixed">
+        <parent link="chassis"/>  <!-- or your main body link -->
+        <child link="imu_link"/>
+        <origin xyz="0.07 0 0.037" rpy="0 0 0"/>  <!-- Adjust to the actual IMU location -->
+    </joint>
+
+    <!-- IMU Link -->
+    <link name="imu_link">
+        <visual>
+            <geometry>
+                <box size="0.01 0.02 0.005"/>  <!-- Approximate size of the BNO055 -->
+            </geometry>
+            <material name="black"/>
+        </visual>
+        <collision>
+            <geometry>
+                <box size="0.01 0.02 0.005"/>
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.02"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="0.00001" ixy="0" ixz="0" iyy="0.00001" iyz="0" izz="0.00001"/>
+        </inertial>
+
+        <!-- Gazebo elements (only for simulation) -->
+        <xacro:property name="use_simulation" value="false"/>
+        <xacro:if value="${use_simulation}">
+            <gazebo reference="imu_link">
+                <sensor name="imu_sensor" type="imu">
+                    <update_rate>50</update_rate>  <!-- Frequency of data updates -->
+                    <pose>0 0 0 0 0 0</pose>
+                    <imu>
+                        <angular_velocity>
+                            <x>0.001</x>
+                            <y>0.001</y>
+                            <z>0.001</z>
+                        </angular_velocity>
+                        <linear_acceleration>
+                            <x>0.001</x>
+                            <y>0.001</y>
+                            <z>0.001</z>
+                        </linear_acceleration>
+                        <orientation>
+                            <x>0.001</x>
+                            <y>0.001</y>
+                            <z>0.001</z>
+                        </orientation>
+                        <noise>
+                            <type>gaussian</type>
+                            <mean>0</mean>
+                            <stddev>0.01</stddev>
+                        </noise>
+                    </imu>
+                </sensor>
+            </gazebo>
+        </xacro:if>
+    </link>
+
+</robot>

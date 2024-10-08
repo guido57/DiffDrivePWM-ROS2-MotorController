@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/home/robot/DiffDrivePWM-ROS2-MotorController/motor_controller"
+    "cmake.sourceDirectory": "/home/robot/DiffDrivePWM-ROS2-MotorController/motor_controller",
+    "cmake.ignoreCMakeListsMissing": true
 }

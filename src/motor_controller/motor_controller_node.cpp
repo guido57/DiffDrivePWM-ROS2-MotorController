@@ -16,10 +16,10 @@ MotorController::MotorController() : Node("motor_controller_node")
     }
 
     // Define the GPIO pins (adjust these to match your wiring)
-    motor1_1_pin_ = 19;  // GPIO19
-    motor1_2_pin_ = 13;  // GPIO13
-    motor2_1_pin_ = 12;  // GPIO12
-    motor2_2_pin_ = 16;  // GPIO16
+    motor2_1_pin_ = 19;  // GPIO19
+    motor2_2_pin_ = 13;  // GPIO13
+    motor1_1_pin_ = 12;  // GPIO12
+    motor1_2_pin_ = 16;  // GPIO16
 
     // Set GPIO modes
     set_mode(pi, motor1_1_pin_, PI_OUTPUT);
