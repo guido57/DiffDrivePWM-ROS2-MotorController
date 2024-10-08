@@ -1,0 +1,11 @@
+# pack-refs with: peeled fully-peeled sorted 
+74cd8485e17e73cb6fe10b634484a20e79cabeeb refs/remotes/origin/61-switch-to-pydantic
+dd104781d9518173e3b797e47544c431ad090eb1 refs/remotes/origin/gh-pages
+45e1ff16936101711260c9fda63fbad99376ce3b refs/remotes/origin/main
+76c9085e7a7c84bf2fd26256c538e3e670ee59c6 refs/tags/0.0.1
+ed686bcdbe16ec793b33f8101b9baf4d9467a533 refs/tags/0.1.1
+76f229d0aba0b407e2f154040caa7393ac91c9a1 refs/tags/0.2.0
+11e4bed075fcef2083535c2e95563f9133254fb5 refs/tags/0.3.0
+77c42601ef0a8d1fb9504d1d43f15f04c347f316 refs/tags/0.4.0
+727d4abc937536be9ad33905dff2a2bde9c3b220 refs/tags/0.4.1
+45e1ff16936101711260c9fda63fbad99376ce3b refs/tags/0.5.0
