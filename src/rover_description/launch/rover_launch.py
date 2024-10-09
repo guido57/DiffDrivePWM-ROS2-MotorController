@@ -24,6 +24,14 @@ def generate_launch_description():
             PythonLaunchDescriptionSource([sllidar_launch_dir, '/sllidar_c1_launch.py']),
         ),
 
+        # launch the battery monitor
+        Node(
+            package='battery_monitor',
+            executable='battery_monitor_node',
+            name='battery_monitor_node',
+            output='screen',
+        ),
+
         # Launch the BNO055 IMU node with the params file
         Node(
             package='bno055',
@@ -32,19 +40,6 @@ def generate_launch_description():
             output='screen',
             parameters=['./src/bno055/bno055/params/bno055_params_i2c.yaml'],
         ),
-
-       # Launch the SLAM Toolbox node
-        # Node(
-        #     package='slam_toolbox',
-        #     executable='sync_slam_toolbox_node',
-        #     name='slam_toolbox',
-        #     output='screen',
-        #     parameters=[slam_params_path],
-        #     remappings=[
-        #         ('scan', '/scan'),  # Ensure this matches your LIDAR topic
-        #         ('imu', '/bno055/imu'),  # Ensure this matches your IMU topic
-        #     ],
-        # ),
 
         # Launch the motor controller node
         Node(
