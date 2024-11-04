@@ -3,7 +3,7 @@
 
 #include "rclcpp/rclcpp.hpp"
 #include "geometry_msgs/msg/twist.hpp"
-#include <pigpio.h>
+#include <pigpio_if2.h>
 
 class MotorController : public rclcpp::Node
 {
