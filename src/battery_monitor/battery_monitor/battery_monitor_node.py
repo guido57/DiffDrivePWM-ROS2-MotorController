@@ -29,7 +29,7 @@ class BatteryMonitor(Node):
 
         # Publish the message
         self.battery_publisher.publish(msg)
-        self.get_logger().info(f"Battery Voltage: {msg.voltage:.2f} V, Current: {msg.current:.2f} A")
+        # self.get_logger().info(f"Battery Voltage: {msg.voltage:.2f} V, Current: {msg.current:.2f} A")
 
 def main(args=None):
     rclpy.init(args=args)

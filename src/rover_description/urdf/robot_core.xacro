@@ -10,7 +10,7 @@
     <xacro:property name="chassis_x_offset" value="0.055"/>
 
     <!-- Parametrize wheel dimensions -->
-    <xacro:property name="wheel_radius" value="0.037"/>
+    <xacro:property name="wheel_radius" value="0.038"/>
     <xacro:property name="wheel_length" value="0.025"/>
 
     <!-- Parametrize caster wheel shaft and caster wheel radii -->

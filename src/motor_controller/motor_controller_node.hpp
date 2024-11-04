@@ -29,7 +29,8 @@ private:
 
     // Parameters
     double wheels_distance_;
-    double max_speed_;
+    double max_lin_speed_;
+    double max_ang_speed_;
     double timeout_duration_;  // Duration to wait before stopping motors after no cmd_vel received
 
 };

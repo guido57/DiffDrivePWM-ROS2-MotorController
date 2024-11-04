@@ -101,7 +101,7 @@ class SLlidarNode : public rclcpp::Node
         sl_result     op_result;
         sl_lidar_response_device_info_t devinfo;
 
-        op_result = drv->getDeviceInfo(devinfo);
+        op_result = drv->getDeviceInfo(devinfo, 4000U);
         if (SL_IS_FAIL(op_result)) {
             if (op_result == SL_RESULT_OPERATION_TIMEOUT) {
                 RCLCPP_ERROR(this->get_logger(),"Error, operation time out. SL_RESULT_OPERATION_TIMEOUT! ");
